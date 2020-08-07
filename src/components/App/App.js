@@ -28,7 +28,7 @@ const App = () => {
   }, []);
   
   return(
-    <>
+    <div style={{backgroundColor: 'black', color: "white", height: "100vh"}}>
       <GlobalStyles />
       <Router>
         <Switch>
@@ -38,7 +38,7 @@ const App = () => {
             <Redirect to={`/artist/${DEFAULT_ARTIST_ID}`} />
         </Switch>
       </Router>
-    </>
+    </div>
   )
 };
 

@@ -46,18 +46,66 @@ const ArtistRoute = () => {
         <>
             {
                 artistInfo ?  
-                    <div>
-                        <img src={artistInfo.profile.images[1].url} alt="Corey Henry smiling"/>
-                        <p>{artistInfo.profile.name}</p>
-                        <p>{formatBigNum(artistInfo.profile.followers.total)} followers</p>
-                        <h2>Tags</h2>
-                        <p>{artistInfo.profile.genres[0]} {artistInfo.profile.genres[1]}</p>
-                    </div> :
+                    <Wrapper>
+                        <ProfileImage src={artistInfo.profile.images[1].url} alt="Corey Henry smiling" />
+                        <LiftUp>
+                            <Name>{artistInfo.profile.name}</Name>
+                            <p style={{position: "relative", top: "-20px"}}><span style={{color: "rgb(247, 109, 238)", fontWeight: "bold"}}>{formatBigNum(artistInfo.profile.followers.total)}</span> followers</p>
+                            <Center>
+                                <h2>tags</h2>
+                                <p><Tags>{artistInfo.profile.genres[0]}</Tags> <Tags>{artistInfo.profile.genres[1]}</Tags></p>
+                            </Center>
+                        </LiftUp>
+                    </Wrapper> :
 
                     "Loading..."
             }
         </>
     )
 }
+
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
+
+const ProfileImage = styled.img`
+    border-radius: 50%;
+    width: 50%;
+    height: 50%;
+    margin-top: 60px;
+`;
+
+const Name = styled.p`
+    font-size: 2.2em;
+    font-weight: bold;
+`;
+
+const LiftUp = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -60px;
+`;
+
+const Tags = styled.span`
+    background-color: rgb(64, 64, 64);
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 5px;
+`;
+const Center = styled.div`
+    position: relative;
+    top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
 
 export default ArtistRoute;
